@@ -93,9 +93,9 @@ app.get("/geturl", async (req,res)=>{
     {
     const data = await BMParser.readFromJSONLZ4File("C:/Users/Vedant/AppData/Roaming/Mozilla/Firefox/Profiles/v56qjxx8.default-release/sessionstore-backups/recovery.jsonlz4")
         .then(result => { 
-          console.log(result.windows[0].tabs[0].entries[0].url)
+          console.log(result.windows[0].tabs[result.windows[0].tabs.length-1].entries[0].url)
           const entries = result.windows[0].tabs[0].entries[0]
-          res.send(result.windows[0].tabs[0].entries[result.windows[0].tabs[0].entries.length-1].url)
+          res.send(result.windows[0].tabs[result.windows[0].tabs.length-1].entries[result.windows[0].tabs[result.windows[0].tabs.length-1].entries.length -1 ].url)
        }).catch(err => {
          res.send(err);
          console.log(err)
